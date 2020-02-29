@@ -14,6 +14,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/res/layer/layer.js"></script>
 <script src="<%=request.getContextPath()%>/res/js/jquery.validate.js"></script>
 <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/res/md5-min.js"></script>
 <script type="text/javascript">
 
     jQuery.validator.addMethod("phone",
@@ -38,7 +39,7 @@
                     minlength:2,
                     remote: {
                         type: 'POST',
-                        url: "<%=request.getContextPath()%>/user/findByNameAndPhoneAndEmail",
+                        url: "<%=request.getContextPath()%>/user/findByName",
                         data:{
                             userName:function() {
                                 return $("#userName").val();
@@ -61,7 +62,7 @@
                     phone:true,
                     remote: {
                         type: 'POST',
-                        url: "<%=request.getContextPath()%>/user/findByNameAndPhoneAndEmail",
+                        url: "<%=request.getContextPath()%>/user/findByPhone",
                         data:{
                             phone:function() {
                                 return $("#phone").val();
@@ -83,7 +84,7 @@
                     email:true,
                     remote: {
                         type: 'POST',
-                        url: "<%=request.getContextPath()%>/user/findByNameAndPhoneAndEmail",
+                        url: "<%=request.getContextPath()%>/user/findByEmail",
                         data:{
                             email:function() {
                                 return $("#email").val();
@@ -142,7 +143,9 @@
 
     $.validator.setDefaults({
         submitHandler: function() {
-            $.post("<%=request.getContextPath() %>/user",
+            var pwd = md5($(":password").val());
+            $(":password").val(pwd);
+            $.post("<%=request.getContextPath() %>/user/add",
                 $("#fm").serialize(),
                 function(data){
                     if(data.code != 200){
@@ -162,6 +165,7 @@
 
 
 
+
 </script>
 <style>
     .error{
@@ -172,7 +176,7 @@
 <form id = "fm">
     <input type="hidden" name="_method" value="post"/>
     用户名<input type="text" name="userName" id = "userName"/><br/>
-    密码<input type="text" name="password" id = "password"/><br/>
+    密码<input type="password" name="password" id = "password"/><br/>
     手机号<input type="text" name="phone" id = "phone"/><br/>
     邮箱<input type="text" name="email" id = "email"/><br/>
     性别:<input type = "radio" name = "sex" value="1" checked/>男<input type = "radio" name = "sex" value="2"/>女<br/>

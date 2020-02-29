@@ -41,5 +41,6 @@ public class User {
     private Integer level;
 
     private Date creatTime;
+    private String salt;
 
 }

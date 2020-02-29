@@ -42,7 +42,15 @@
     }
 
     function toAdd(){
-        window.location.href = "<%=request.getContextPath() %>/user/toAdd";
+        layer.open({
+            type: 2,
+            title: '关联资源',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['480px', '70%'],
+            resize:false,
+            content: "<%=request.getContextPath() %>/user/toAdd"
+        });
     }
 
 
@@ -51,7 +59,7 @@
     <form id = "fm">
         用户名：<input type="text" name = "userName" placeholder="用户名/手机号/邮箱"/><br />
         密  码：<input type="password" name = "password"/><br />
-        <a href="#" onclick="toAdd()">还有没有账号?点我去注册</a>
+        <a href="#" onclick="toAdd()">还有没有账号?点我去注册</a><br/>
         <input type="button" value="登录" onclick="login()"/>
 </form>
 </body>
