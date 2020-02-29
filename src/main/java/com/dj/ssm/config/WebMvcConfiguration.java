@@ -17,7 +17,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration interceptorRegistration = registry.addInterceptor(myInterceptor);
         //拦截请求
-        interceptorRegistration.addPathPatterns("/**");
+      /*  interceptorRegistration.addPathPatterns("/**");*/
         interceptorRegistration.addPathPatterns("/user/toShow");
 
         //放过的请求

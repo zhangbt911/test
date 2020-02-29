@@ -9,7 +9,7 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>//res/js/jquery-1.12.4.min.js"></script>
 <body>
 
-    <h2 align="center"><a href = "<%=request.getContextPath() %>/users/toShow" target="right">展示</a><br/></h2>
+    <h2 align="center"><a href = "<%=request.getContextPath() %>/user/toShow" target="right">展示</a><br/></h2>
 
 </body>
 </html>

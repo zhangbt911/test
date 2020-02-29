@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: dj
-  Date: 2020/2/23
+  Date: 2020/2/29
   Time: 17:23
   To change this template use File | Settings | File Templates.
 --%>
@@ -172,17 +172,17 @@
     }
 </style>
 <body>
-<form id = "fm">
-    <input type="hidden" name="_method" value="post"/>
-    用户名<input type="text" name="userName" id = "userName"/><br/>
-    密码<input type="password" name="password" id = "password"/><br/>
-    手机号<input type="text" name="phone" id = "phone"/><br/>
-    邮箱<input type="text" name="email" id = "email"/><br/>
-    性别:<input type = "radio" name = "sex" value="1" checked/>男<input type = "radio" name = "sex" value="2"/>女<br/>
-    年龄:<input type = "text" name = "age" id = "age"/><br/>
-    角色:<input type = "radio" name = "level" value="1" checked/>用户<input type = "radio" name = "level" value="0"/>管理员<br/>
-    <input type = "hidden" name = "isDel" value = "1"/>
-    <input type="submit" value="注册 "/>
-</form>
+    <form id = "fm">
+        <input type="hidden" name="_method" value="post"/>
+        用户名<input type="text" name="userName" id = "userName"/><br/>
+        密码<input type="password" name="password" id = "password"/><br/>
+        手机号<input type="text" name="phone" id = "phone"/><br/>
+        邮箱<input type="text" name="email" id = "email"/><br/>
+        性别:<input type = "radio" name = "sex" value="1" checked/>男<input type = "radio" name = "sex" value="2"/>女<br/>
+        年龄:<input type = "text" name = "age" id = "age"/><br/>
+        角色:<input type = "radio" name = "level" value="1" checked/>用户<input type = "radio" name = "level" value="0"/>管理员<br/>
+        <input type = "hidden" name = "isDel" value = "1"/>
+        <input type="submit" value="注册 "/>
+    </form>
 </body>
 </html>

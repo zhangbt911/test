@@ -21,4 +21,10 @@ public class UserPageController {
     }
 
 
+    @RequestMapping("toShow")
+    public String toShow(){
+        return  "user/show";
+    }
+
+
 }
