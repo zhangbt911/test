@@ -1,6 +1,7 @@
 package com.dj.ssm.comtroller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.dj.ssm.common.ResultModel;
 import com.dj.ssm.pojo.User;
 import com.dj.ssm.service.UserService;
@@ -171,5 +172,18 @@ public class UserController {
         return new ResultModel<>().success("成功");
     }
 
+    /**
+     * 删除
+     * @param
+     * @return
+     */
+    @RequestMapping("delById")
+    public ResultModel<Object> delById(Integer id) {
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.set("is_del", 0);
+        updateWrapper.eq("id", id);
+        userService.update(updateWrapper);
+        return new ResultModel<>().success("成功");
+    }
 
 }

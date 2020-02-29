@@ -77,6 +77,41 @@
         }
     }
 
+    //删除
+    function delById(){
+        var length = $("input[name='id']:checked").length;
+
+        if(length <= 0){
+            alert("至少选择一项");
+            return;
+        }
+        if(length > 1){
+            alert("只能选择一个");
+            return;
+        }
+
+        var id = $("input[name='id']:checked").val();
+        var index = layer.load(1,{shade:0.5});
+        layer.confirm('确定删除吗?', {icon: 3, title:'提示'}, function(index){
+            //do something
+            $.post(
+                "<%=request.getContextPath()%>/user/delById",
+                {"id": id},
+                function(data){
+                    if (data.code != -1) {
+                        layer.msg(data.msg, {icon: 6}, function(){
+                            window.location.href = "<%=request.getContextPath()%>/user/toShow";
+                        });
+                        return;
+                    }
+                    layer.msg(data.msg, {icon: 5})
+                    layer.close(index);
+                }
+            )
+        });
+    }
+
+
 </script>
 <body>
 
