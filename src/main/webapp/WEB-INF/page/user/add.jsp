@@ -14,7 +14,6 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/res/layer/layer.js"></script>
 <script src="<%=request.getContextPath()%>/res/js/jquery.validate.js"></script>
 <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/res/md5-min.js"></script>
 <script type="text/javascript">
 
     jQuery.validator.addMethod("phone",
@@ -72,7 +71,7 @@
                                 if (data == 'true'){
                                     return true;
                                 }else {
-                                    return false	;
+                                    return false;
                                 }
                             }
 
@@ -94,7 +93,7 @@
                                 if (data == 'true'){
                                     return true;
                                 }else {
-                                    return false	;
+                                    return false;
                                 }
                             }
 
@@ -145,7 +144,7 @@
         submitHandler: function() {
             var pwd = md5($(":password").val());
             $(":password").val(pwd);
-            $.post("<%=request.getContextPath() %>/user/add",
+            $.post("<%=request.getContextPath() %>/user",
                 $("#fm").serialize(),
                 function(data){
                     if(data.code != 200){
@@ -183,7 +182,7 @@
     年龄:<input type = "text" name = "age" id = "age"/><br/>
     角色:<input type = "radio" name = "level" value="1" checked/>用户<input type = "radio" name = "level" value="0"/>管理员<br/>
     <input type = "hidden" name = "isDel" value = "1"/>
-    <input type="submit" value="新增"/>
+    <input type="submit" value="注册 "/>
 </form>
 </body>
 </html>

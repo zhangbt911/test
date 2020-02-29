@@ -23,7 +23,7 @@ public class PasswordSecurityUtil {
 	private static String bytesToHex(byte[] bytes) {
 		StringBuffer sb = new StringBuffer();
 		int t;
-		for (int i = 0; i < 16; i++) {// 16 == bytes.length;
+		for (int i = 0; i < 16; i++) {
 			t = bytes[i];
 			if (t < 0){
 				t += 256;

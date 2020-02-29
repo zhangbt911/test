@@ -5,6 +5,9 @@ import com.dj.ssm.common.ResultModel;
 import com.dj.ssm.pojo.User;
 import com.dj.ssm.service.UserService;
 import com.dj.ssm.utils.PasswordSecurityUtil;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +26,17 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("login")
-    private ResultModel login (){
+    private ResultModel login (User user){
+        try{
+            Subject subject = SecurityUtils.getSubject();
+            UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());
+            subject.login(token);
 
-
-        return new ResultModel().success();
+            return new ResultModel().success(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResultModel<>().error(e.getMessage());
+        }
     }
 
 
@@ -70,8 +80,8 @@ public class UserController {
     }
 
 
-    @RequestMapping("add")
-    private ResultModel add (User user){
+    @PostMapping
+    private ResultModel add(User user){
         try {
             //密文密码
             String md5pwd = PasswordSecurityUtil.enCode32(user.getPassword());
@@ -83,7 +93,8 @@ public class UserController {
             user.setSalt(salt);
 
             user.setCreatTime(new Date());
-            return new ResultModel().success(userService.save(user));
+            userService.save(user);
+            return new ResultModel().success("成功");
         }catch (Exception e){
             e.printStackTrace();
             return new ResultModel().error(e.getMessage());
