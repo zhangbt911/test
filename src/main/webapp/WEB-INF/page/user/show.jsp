@@ -50,6 +50,32 @@
             }
         )}
 
+    //修改
+    function toUpdate(){
+        var array = new Array();
+        $(':checkbox:checked').each(function(){
+            array.push($(this).val());
+        });
+        if (array.length == 1) {
+            layer.open({
+                type: 2,
+                title: '关联资源',
+                shadeClose: true,
+                shade: 0.8,
+                area: ['480px', '70%'],
+                resize:false,
+                content: "<%=request.getContextPath()%>/user/toUpdate/"+array[0]
+            });
+        }
+        if (array.length < 1) {
+            layer.msg("请选择", {icon: 5}, {time: 2*1000});
+            return;
+        }
+        if (array.length >= 2) {
+            layer.msg("只能选择一个", {icon: 5}, {time: 2*1000});
+            return;
+        }
+    }
 
 </script>
 <body>

@@ -160,5 +160,16 @@ public class UserController {
         return new ResultModel<>().success(list);
     }
 
+    /**
+     * 修改
+     * @param user
+     * @return
+     */
+    @RequestMapping("update")
+    public ResultModel<Object> update(User user){
+        userService.updateById(user);
+        return new ResultModel<>().success("成功");
+    }
+
 
 }
