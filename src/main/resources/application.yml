@@ -1,0 +1,42 @@
+
+
+server:
+  port: 8080
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+    context-path: /book
+
+# Spring MVC
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&useSSL=false
+  mvc:
+    view:
+      prefix: /WEB-INF/page/
+      suffix: .jsp
+    spring:
+      mvc:
+        static-path-pattern= /res/**:
+    hiddenmethod:
+      filter:
+        enabled: true
+  resources:
+    static-locations: classpath:/
+
+
+# Mybatis-Plus
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dj.ssm.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+logging:
+  level:
+    com.dj.ssm.mapper: DEBUG
